@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test page.</title>
+</head>
+<body>
+	<script>document.write("hello javascript");</script>
+	<p>4 Factorial = factorial (4)</p>
+<!--<script>
+	var nm;
+	nm = prompt("Please enter your name:");
+	document.write("Hello " + nm + " :)");
+	var date = Date();
+	document.write("<br>" + "Today is " + date + ".");
+	//var location = document.location;
+	//document.write("<br>"+location);
+</script>
+<script>
+	var hello;
+	prompt();
+</script>-->
+<br>
+<br>
+<!--	<table align="center" bgcolor="lightGray" frame="LHS">
+  <tbody>
+    <tr>
+      <td>This is a test.</td>
+      <td>Of the table abilities</td>
+      <td>of quanta three editor.</td>
+      <td>It </td>
+      <td>looks </td>
+    </tr>
+    <tr>
+      <td>as though</td>
+      <td>I</td>
+      <td>can make tables</td>
+      <td>pretty</td>
+      <td>easily.</td>
+    </tr>
+    <tr>
+      <td>My</td>
+      <td>Name </td>
+      <td>Is processPHP</td>
+      <td>And </td>
+      <td>I built</td>
+    </tr>
+    <tr>
+      <td>this </td>
+      <td>table </td>
+      <td>pretty easily</td>
+      <td>!!!!</td>
+      <td>N/J!!!</td>
+    </tr>
+  </tbody>
+</table>
+-->
+<?php
+function foo()
+{
+  function bar()
+  {
+    echo "I don't exist until foo() is called.\n";
+  }
+}
+
+function processPHP()
+{
+	echo "<br>The web-server now processes .html files as .php! Awesome!\n";
+}
+
+/* We can't call bar() yet
+   since it doesn't exist. */
+
+foo();
+
+/* Now we can call bar(),
+   foo()'s processesing has
+   made it accessable. */
+
+bar();
+processPHP();
+
+?>
+<table>
+	<thead>
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Phone Number</th>
+			<th>Email Address</th>
+			<th>
+				Mailing Address
+			</th>
+			<th>Interests</th>
+	</tr>
+	</thead>
+<?php
+
+	echo '<p>Attempting MySQL Connection...</p><br>';
+	$link = new mysqli('localhost', 'root', 'root', 'katie_dance');
+	if (!$link) {
+    	die('Could not connect: ' . mysql_error());
+		}
+		echo 'Connected successfully.<br>';
+		$query = "SELECT * FROM student;";
+		$result = $link->query($query);
+		if (!$result) {
+			die($link->error);
+		}
+		$rows = $result->num_rows;
+
+			echo "<tbody>";
+				for($j = 0; $j < $rows; ++$j) {
+					$result->data_seek($j);
+					$row = $result->fetch_array(MYSQLI_ASSOC);
+					echo "<tr>";
+					echo "<td>" .$row['student_firstName'] . "</td>";
+					echo "<td>" .$row['student_lastName'] . "</td>";
+					echo "<td>" .$row['student_phoneNumber'] . "</td>";
+					echo "<td>" .$row['student_emailAddress'] . "</td>";
+					echo "<td>" .$row['student_mailingAddress'] . "</td>";
+					echo "<td>" .$row['student_interests'] . "</td>";
+					echo "</tr>";
+				}
+
+		$result->close();
+		$link->close();
+
+	if(!$link) {
+		echo 'Connection closed.<br>';
+	}
+?>
+</tbody>
+</table>
+
+
+<p>
+	This is at the end of the page.
+</p>
+</body>
+</html>

@@ -1,0 +1,20 @@
+This file keeps a record of all the ideas and functions required for Lydia's dance studio database.
+
+Tables:
+- Students
+- Employees
+- Class types
+- Package types
+- Programs (sold packages)
+- Lesson calendar
+- Group Classes
+- Private Lessons
+
+
+Functionality:
+- Automatic emails
+- Payroll
+- Birthday reminders
+- Class tracking (keeping tally of attendance)
+- Checking in students
+- Payment intallments
